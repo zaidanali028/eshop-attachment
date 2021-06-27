@@ -485,7 +485,7 @@ router.post("/order-not-delivered/:id",ensureAuthenticated, adminAuth,async(req,
 router.post("/product-to-donko/:id",ensureAuthenticated,adminAuth,async (req, res) => {
   const product = await Product.findById(req.params.id);
   product.isFiftyOff = true;
-  product.discount=50
+  product.discount=50;
   product.price = product.oldPrice - (50 / 100) * product.oldPrice;
   
 
