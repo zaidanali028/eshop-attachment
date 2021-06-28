@@ -124,5 +124,6 @@ app.use("/", homeRoutes);
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
+  //server is running................
 });
 /*End of app.js*/ 
