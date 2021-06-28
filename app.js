@@ -17,12 +17,8 @@ var MongoStore = require("connect-mongo");
 
 
 
-// app.set('trust proxy', true);
 const dbUrI=process.env.DB_URL
-// const dbUrI = "mongodb://localhost:27017/eshop-update";
-app.enable('trust proxy'); // trust all
 
-// app.use(morgan("tiny"));
 const passport=require('passport')
 require("./config/passport")(passport);
 
@@ -49,7 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// app.use(cookieParser());
+
 
 // flash message
 app.use(flash());
@@ -64,7 +60,7 @@ app.use(favicon(__dirname +'/public/images/favicon.png'));
 //method override to be used for sending put requests
 app.use(methodOverride("_method"));
 
-//cookieParser() should always come before session!
+
 app.use(cookieParser())
 
 
@@ -77,15 +73,6 @@ app.set(express.static(path.join(__dirname, "public")));
 
 
 
-//force http redirects to https(used only in production)
-function requireHTTPS(req, res, next) {
-  // The 'x-forwarded-proto' check is for Heroku
-  if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
-    return res.redirect('https://' + req.get('host') + req.url);
-  }
-  next();
-}
-app.use(requireHTTPS);
 
 app.use(session({
   secret:  process.env.SESSION_SECRET,
@@ -107,7 +94,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.enable("trust proxy")
 
 // declaring local variables for displaying FLASH messages
 app.use((req, res, next) => {
@@ -136,15 +122,7 @@ app.use("/admin", adminRoutes);
 app.use("/users", userRoutes);
 app.use("/", homeRoutes);
 
-
-
-
-// app.get('*',(req,res,next)=>{
-//   // res.render('admin/page404')
-//   console.log("yoh")
-// })
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
-//app.js
-//Yooooooooooo
+/*End of app.js*/ 
