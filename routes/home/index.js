@@ -1242,7 +1242,6 @@ router.get("/", ensureGuest,async (req, res) => {
     const products = await Product.find({ isFeatured: true }).sort({
       createdAt: -1,
     });
-    // .limit(5);
 
     res.render("home/home", {
       categories,
